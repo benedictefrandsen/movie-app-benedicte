@@ -86,8 +86,9 @@ main {
 #search-input:focus,
 #genre-select:focus,
 #sort-select:focus {
-  outline: 2px solid var(--secondary);
-  border-color: var(--secondary);
+  .movie-card {
+  border: 3px solid red; /* Tilføj for at se boundaries */
+}
 }
 
 #search-input::placeholder {
@@ -398,4 +399,44 @@ dialog#movie-dialog::backdrop {
   #close-dialog {
     background: rgba(23, 23, 23, 0.9);
   }
+}
+#movie-list {
+  display: grid;
+grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Mobile først - 1 kolonne */
+#movie-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Tablet - 2 kolonner */
+@media (min-width: 600px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+}
+/* Desktop - 3 kolonner */
+@media (min-width: 992px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+/* Store skærme - 4 kolonner */
+@media (min-width: 1400px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+#movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
 }
