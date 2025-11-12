@@ -115,9 +115,10 @@ main {
 .range-group {
   flex: 1;
 }
-range-group:has(#rating-from),
+
+.range-group:has(#rating-from),
 .range-group:has(#rating-to) {
-  flex: 0.5; /* Gør rating-boksen mindre */
+  flex: 0.5;
   max-width: 180px; /* Begræns max bredde */
 }
 
@@ -923,5 +924,32 @@ dialog#movie-dialog::backdrop {
   }
   #close-dialog {
     background: rgba(23, 23, 23, 0.9);
+  }
+}
+/* =====================
+   GAME GRID
+   ===================== */
+#spil-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding: 2rem 0;
+}
+
+@media (min-width: 600px) {
+  #spil-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  #spil-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  #spil-list {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
