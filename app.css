@@ -38,8 +38,8 @@ header {
   color: #c02d2d;
   padding: 1rem 0 1.5rem;
   text-align: center;
-  position: absolute; /* Ændret fra fixed til absolute */
-  top: 0;
+  position: absolute; 
+  top: 10px;
   left: 0;
   right: 0;
   z-index: 1000;
@@ -95,79 +95,6 @@ main {
   border: 1px solid rgba(172, 198, 201, 0.1);
 }
 
-/* Filter rækker */
-.filter-row-main {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.filter-row-ranges {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 1rem;
-  align-items: end;
-}
-
-/* Filter grupper */
-.filter-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.filter-group label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text);
-  display: block;
-}
-
-/* Range grupper */
-.range-group {
-  flex: 1;
-}
-
-.range-group:has(#rating-from),
-.range-group:has(#rating-to) {
-  flex: 0.5;
-  max-width: 180px; /* Begræns max bredde */
-}
-
-.range-label {
-  margin-bottom: 0.5rem;
-}
-
-.range-inputs {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-#rating-from,
-#rating-to {
-  max-width: 70px; /* Mindre input felter for rating */
-  padding: 0.5rem 0.75rem; /* Mindre padding */
-  font-size: 0.9rem; /* Mindre tekst */
-}
-
-.range-label {
-  margin-bottom: 0.5rem;
-}
-
-.range-inputs {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.range-separator {
-  color: var(--secondary);
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
 /* Input felter styling */
 #search-input,
 #genre-select,
@@ -216,7 +143,30 @@ main {
 .search-group {
   grid-column: 1 / 2;
 }
+#clear-filters {
+  background: var(--bg-card);
+  color: var(--text);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-weight: 500;
+}
 
+#clear-filters:hover {
+  background: var(--error);
+  color: white;
+  border-color: var(--error);
+  transform: translateY(-2px);
+}
+
+#clear-filters:focus {
+  outline: 2px solid var(--secondary);
+  border-color: var(--secondary);
+}
 
 /* =====================
    HEADER & FOOTER
@@ -295,13 +245,24 @@ footer {
 .game-info h3 {
   font-size: clamp(1.125rem, 2vw, 1.375rem);
   font-weight: 600;
-  color: var(--text);
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.5rem;
+  color: #b33333; /* Direkte farve */
+  font-family: Arial, sans-serif;
   margin-bottom: 0.5rem;
-  font-family: Arial, sans-serif; /* Tilføjet */
+}
+
+.game-genre,
+.game-players {
+  color: #333333; /* Mørk grå for bedre læsbarhed */
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-family: Arial, sans-serif;
+}
+
+.game-rating {
+  color: #fbc02d; /* Gul */
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-family: Arial, sans-serif;
 }
 
 .game-year {
@@ -324,7 +285,7 @@ footer {
   font-weight: 600;
   margin-bottom: 0.5rem;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
 }
 
 .game-rating::before {
@@ -466,7 +427,7 @@ dialog#game-dialog::backdrop {
   gap: 0.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   #dialog-content .game-rating {
     justify-content: center;
   }
